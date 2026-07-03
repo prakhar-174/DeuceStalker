@@ -42,26 +42,17 @@ export default function Story() {
           >
             <div className={styles.storyText}>
               <p>
-                It started with curiosity - the kind that makes you inspect every
-                website you visit. I was fascinated by how lines of code could become
-                something people <em>use</em>, something people <em>feel</em>.
+                My journey into tech began with a drive to solve real-world problems. What started as curiosity quickly evolved into a passion for building systems that make a tangible impact.
               </p>
               <p>
-                I taught myself HTML in a weekend, wrote my first CSS layout that
-                didn't break (mostly), and fell into the rabbit hole of JavaScript.
-                The more I built, the more I realized: this wasn't just about code.
-                It was about solving problems for real people.
+                Through intense hackathons and late-night coding sessions, I honed my ability to rapidly prototype and architect full-stack solutions. Winning my first hackathon wasn't just a milestone, it was the spark that pushed me to think bigger.
               </p>
               <p>
-                Now I build full-stack applications that are fast, accessible, and
-                impossible to forget. I care about the craft - the animations that
-                feel right, the architecture that scales, and the details that most
-                people never notice but always feel.
+                Today, I focus on innovating at the intersection of AI, education, and agriculture. From qualifying GATE in CS/IT to filing multiple patents for platforms like SkillForge and AgriConnect, I believe in building technology that scales and empowers users.
               </p>
               <p>
-                I'm currently working on projects that push the boundaries of what
-                the web can do. Every line of code is a step forward.
-                <span className={styles.accent}> The web is my domain. </span>
+                Every project I take on is an opportunity to push the boundaries of what's possible. I don't just write code; I engineer solutions.
+                <span className={styles.accent}> Innovation is my domain. </span>
               </p>
             </div>
 

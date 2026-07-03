@@ -15,24 +15,8 @@ export default function Loader({ onComplete }) {
   const [exiting, setExiting] = useState(false);
   const [isSkippable, setIsSkippable] = useState(false);
   const skipRef = useRef(false);
-  const hasVisited = useRef(false);
-  // Check for return visit
-  useEffect(() => {
-    hasVisited.current = localStorage.getItem('deucestalker_visited') === 'true';
-  }, []);
-  // Mini-loader for return visits
-  const runMiniLoader = useCallback(() => {
-    setStep(3); // Jump to character visible
-    setTimeout(() => {
-      triggerExit();
-    }, 800);
-  }, []);
   // Main loader sequence
   useEffect(() => {
-    if (hasVisited.current) {
-      runMiniLoader();
-      return;
-    }
     const timers = [];
     // Step 1: Black screen (200ms)
     timers.push(setTimeout(() => setStep(1), 200));
@@ -48,7 +32,7 @@ export default function Loader({ onComplete }) {
     // Step 5: Start dialogue
     timers.push(setTimeout(() => setStep(5), 2800));
     return () => timers.forEach(clearTimeout);
-  }, [runMiniLoader]);
+  }, []);
   // Typewriter effect
   useEffect(() => {
     if (step < 5 || currentLine >= DIALOGUE_LINES.length) return;
@@ -82,7 +66,6 @@ export default function Loader({ onComplete }) {
     if (exiting) return;
     setExiting(true);
     skipRef.current = true;
-    localStorage.setItem('deucestalker_visited', 'true');
     setTimeout(() => {
       onComplete();
     }, 600);
@@ -136,7 +119,7 @@ export default function Loader({ onComplete }) {
                 ease: [0.34, 1.56, 0.64, 1],
               }}
             >
-              <div className={`${styles.characterInner} ${step >= 4 ? styles.sway : ''} ${hasVisited.current ? styles.thumbsUp : ''}`}>
+              <div className={`${styles.characterInner} ${step >= 4 ? styles.sway : ''}`}>
                 <img
                   src="/spiderman.png"
                   alt="Spider-Man"
@@ -148,7 +131,7 @@ export default function Loader({ onComplete }) {
             </motion.div>
           )}
           {/* Dialogue */}
-          {step >= 5 && !hasVisited.current && (
+          {step >= 5 && (
             <motion.div
               className={styles.dialogue}
               initial={{ opacity: 0 }}
@@ -170,7 +153,7 @@ export default function Loader({ onComplete }) {
             </div>
           )}
           {/* Skip hint */}
-          {isSkippable && !hasVisited.current && (
+          {isSkippable && (
             <motion.p
               className={styles.skipHint}
               initial={{ opacity: 0 }}

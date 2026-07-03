@@ -1,86 +1,102 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import ContactForm from './ContactForm';
-import { FiGithub, FiLinkedin, FiTwitter, FiMail } from 'react-icons/fi';
-import { EASING } from '../../lib/animations';
+import { FiGithub, FiLinkedin, FiTwitter, FiInstagram } from 'react-icons/fi';
 import styles from './Contact.module.css';
 
+const quickLinks = [
+  { label: 'Work', href: '#work' },
+  { label: 'Skills', href: '#skills' },
+  { label: 'Story', href: '#story' },
+  { label: 'Back to Top', href: '#hero' },
+];
+
 const socialLinks = [
-  { icon: FiGithub, href: '#', label: 'GitHub' },
   { icon: FiLinkedin, href: '#', label: 'LinkedIn' },
   { icon: FiTwitter, href: '#', label: 'Twitter / X' },
-  { icon: FiMail, href: 'mailto:hello@deucestalker.dev', label: 'Email' },
+  { icon: FiInstagram, href: '#', label: 'Instagram' },
+  { icon: FiGithub, href: '#', label: 'GitHub' },
 ];
 
 export default function Contact() {
   const [ref, inView] = useInView({ threshold: 0.2, triggerOnce: true });
 
+  const scrollTo = (href, e) => {
+    e.preventDefault();
+    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <section id="contact" className={styles.contact}>
-      <div className="section-wrapper" ref={ref}>
-        {/* Chapter header */}
-        <div className="chapter-header">
-          <p className="text-chapter-number">CHAPTER 05</p>
-          <h2 className="text-chapter-title">The Contact.</h2>
-        </div>
+    <footer id="contact" className={styles.contactFooter} ref={ref}>
+      <div className={styles.footerInner}>
+        {/* Left Column - Brand */}
+        <motion.div 
+          className={styles.brandCol}
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+        >
+          <div className={styles.logo}>
+            <span className={styles.logoWhite}>Deuce</span>
+            <span className={styles.logoRed}>Stalker</span>
+          </div>
+          <p className={styles.brandDesc}>
+            A passionate Frontend Developer and Web Craftsman focused on building innovative, performant, and beautifully designed web experiences.
+          </p>
+        </motion.div>
 
-        <div className={styles.layout}>
-          {/* Headline */}
-          <motion.div
-            className={styles.headline}
-            initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, ease: EASING.smooth }}
-          >
-            <h3 className={styles.signalText}>
-              Your signal has been received.
-            </h3>
-            <p className={styles.subtext}>
-              Whether you have a project in mind, a question to ask,
-              or just want to say hello - I am listening.
-            </p>
-          </motion.div>
+        {/* Middle Column - Quick Links */}
+        <motion.div 
+          className={styles.linksCol}
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
+          <h4 className={styles.colTitle}>Quick Links</h4>
+          <ul className={styles.linksList}>
+            {quickLinks.map((link) => (
+              <li key={link.label}>
+                <a href={link.href} onClick={(e) => scrollTo(link.href, e)} className={styles.footerLink}>
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </motion.div>
 
-          {/* Contact form */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.2, ease: EASING.smooth }}
-          >
-            <ContactForm />
-          </motion.div>
-
-          {/* Social Links */}
-          <motion.div
-            className={styles.socials}
-            initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.5, delay: 0.5 }}
-          >
-            {socialLinks.map((social, i) => (
-              <motion.a
+        {/* Right Column - Stay Updated */}
+        <motion.div 
+          className={styles.infoCol}
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <h4 className={styles.colTitle}>Stay Updated</h4>
+          <p className={styles.infoText}>
+            Ghaziabad, Uttar Pradesh, India
+          </p>
+          <p className={styles.infoText}>
+            hello@deucestalker.dev
+          </p>
+          <div className={styles.socialIcons}>
+            {socialLinks.map((social) => (
+              <a 
                 key={social.label}
                 href={social.href}
-                target={social.href.startsWith('mailto') ? undefined : '_blank'}
+                target="_blank"
                 rel="noopener noreferrer"
-                className={styles.socialLink}
+                className={styles.socialIconBtn}
                 aria-label={social.label}
-                whileHover={{ y: -6 }}
-                transition={{ type: 'spring', stiffness: 400 }}
               >
-                <social.icon size={20} />
-              </motion.a>
+                <social.icon size={18} />
+              </a>
             ))}
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
-
-      {/* Footer */}
-      <footer className={styles.footer}>
-        <p>
-          Built with React, Three.js & too much coffee &nbsp;·&nbsp; © {new Date().getFullYear()} Prakhar
-        </p>
-      </footer>
-    </section>
+      
+      <div className={styles.footerBottom}>
+        <p>© {new Date().getFullYear()} Prakhar (DeuceStalker). All rights reserved.</p>
+      </div>
+    </footer>
   );
 }

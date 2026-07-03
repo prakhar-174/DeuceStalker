@@ -1,40 +1,40 @@
-// Timeline milestones - replace with your actual journey
+// Timeline milestones
 export const milestones = [
   {
-    year: '2021',
-    title: 'The Spark',
-    description: 'Started learning HTML & CSS',
-    aside: '"Thought it was just making things pretty."',
-  },
-  {
-    year: '2022',
-    title: 'First Code',
-    description: 'Built my first JavaScript project',
-    aside: '"A to-do app. Because of course."',
-  },
-  {
-    year: '2023',
-    title: 'Going Deeper',
-    description: 'Learned React & Node.js - built full-stack apps',
-    aside: '"When things finally started clicking."',
-  },
-  {
     year: '2024',
-    title: 'Going Live',
-    description: 'First freelance client & open source contributions',
-    aside: '"Got paid to write code. Still surreal."',
+    title: 'First Victory',
+    description: 'Won my first hackathon',
+    aside: '"The taste of success and sleep deprivation."',
   },
   {
     year: '2025',
-    title: 'DeuceStalker Era',
-    description: 'Building the web, one project at a time',
-    aside: '"The story is just getting started."',
+    title: 'Regional Recognition',
+    description: 'Secured 4th Place in NCR in a regional hackathon',
+    aside: '"Competing with the best in the region."',
   },
+  {
+    year: '2026',
+    title: 'GATE Qualified',
+    description: 'GATE Qualified in CS/IT',
+    aside: '"Solidifying the fundamentals."',
+  },
+  {
+    year: '2026',
+    title: 'First Patent Filed',
+    description: 'Invented an integrated "Learn → Verify → Earn" pipeline combining adaptive AI learning paths and NLP-driven job matching. (App No. 202611054624)',
+    aside: '"Innovating at scale."',
+  },
+  {
+    year: '2026',
+    title: 'Second Patent Filed',
+    description: 'Invented a multi-stakeholder marketplace connecting agricultural workers, land providers, and buyers. (App No. 202611022741)',
+    aside: '"Tech for the real world."',
+  }
 ];
 
 export const stats = [
-  { label: 'Years Experience', value: 3, suffix: '+' },
-  { label: 'Projects Shipped', value: 15, suffix: '+' },
-  { label: 'Clients Served', value: 5, suffix: '+' },
+  { label: 'Real-Life Projects', value: 5, suffix: '+' },
+  { label: 'Patents Filed', value: 2, suffix: '' },
   { label: 'Cups of Coffee', value: 1000, suffix: '+' },
+  { label: 'Hackathons Won', value: 3, suffix: '+' },
 ];

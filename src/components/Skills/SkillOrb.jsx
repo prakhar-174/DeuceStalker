@@ -1,17 +1,17 @@
 import { useState } from 'react';
 import {
-  SiReact, SiJavascript, SiNodedotjs, SiTypescript,
-  SiPython, SiMongodb, SiPostgresql, SiNextdotjs,
-  SiTailwindcss, SiExpress, SiGit, SiDocker,
-  SiFirebase, SiFigma, SiVercel, SiLinux,
+  SiReact, SiJavascript, SiTypescript, SiPython,
+  SiTailwindcss, SiFramer, SiPostgresql, SiMysql,
+  SiGit, SiGithub, SiDocker, SiJsonwebtokens, SiVercel,
+  SiCplusplus, SiRadixui, SiFastapi
 } from 'react-icons/si';
 import styles from './Skills.module.css';
 
 const iconMap = {
-  SiReact, SiJavascript, SiNodedotjs, SiTypescript,
-  SiPython, SiMongodb, SiPostgresql, SiNextdotjs,
-  SiTailwindcss, SiExpress, SiGit, SiDocker,
-  SiFirebase, SiFigma, SiVercel, SiLinux,
+  SiReact, SiJavascript, SiTypescript, SiPython,
+  SiTailwindcss, SiFramer, SiPostgresql, SiMysql,
+  SiGit, SiGithub, SiDocker, SiJsonwebtokens, SiVercel,
+  SiCplusplus, SiRadixui, SiFastapi
 };
 
 export default function SkillOrb({ skill }) {

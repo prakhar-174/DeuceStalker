@@ -70,11 +70,11 @@ Spider-Man themed portfolio website - "A Web-Slinger's Chronicle". Single-page R
 ## What's Remaining / To Customize 📋
 
 ### Must Do (Before Going Live)
-- [ ] Replace placeholder project data in `src/data/projects.js` with real projects
+- [x] Replace placeholder project data in `src/data/projects.js` with real projects
 - [ ] Add real project screenshots to `public/images/projects/`
-- [ ] Update story text in `Story.jsx` with your actual narrative
-- [ ] Update timeline milestones in `src/data/timeline.js`
-- [ ] Update skills proficiency/years in `src/data/skills.js`
+- [x] Update story text in `Story.jsx` with your actual narrative
+- [x] Update timeline milestones in `src/data/timeline.js`
+- [x] Update skills proficiency/years in `src/data/skills.js`
 - [ ] Add real social links in `Contact.jsx` (GitHub, LinkedIn, X URLs)
 - [ ] Configure EmailJS: create account, get credentials, add to `.env`
 - [ ] Replace "YOUR NAME" references if any remain
