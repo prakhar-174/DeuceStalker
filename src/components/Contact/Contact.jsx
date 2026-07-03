@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { FiGithub, FiLinkedin, FiTwitter, FiInstagram } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiTwitter, FiMail } from 'react-icons/fi';
 import styles from './Contact.module.css';
 
 const quickLinks = [
@@ -11,10 +11,10 @@ const quickLinks = [
 ];
 
 const socialLinks = [
-  { icon: FiLinkedin, href: '#', label: 'LinkedIn' },
-  { icon: FiTwitter, href: '#', label: 'Twitter / X' },
-  { icon: FiInstagram, href: '#', label: 'Instagram' },
-  { icon: FiGithub, href: '#', label: 'GitHub' },
+  { icon: FiLinkedin, href: 'https://www.linkedin.com/in/prakhar-tiwari1908/', label: 'LinkedIn' },
+  { icon: FiTwitter, href: 'https://x.com/tPrakhar19', label: 'Twitter / X' },
+  { icon: FiMail, href: 'mailto:prakhartiwari1931@gmail.com', label: 'Email' },
+  { icon: FiGithub, href: 'https://github.com/prakhar-174/', label: 'GitHub' },
 ];
 
 export default function Contact() {
@@ -29,7 +29,7 @@ export default function Contact() {
     <footer id="contact" className={styles.contactFooter} ref={ref}>
       <div className={styles.footerInner}>
         {/* Left Column - Brand */}
-        <motion.div 
+        <motion.div
           className={styles.brandCol}
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -45,7 +45,7 @@ export default function Contact() {
         </motion.div>
 
         {/* Middle Column - Quick Links */}
-        <motion.div 
+        <motion.div
           className={styles.linksCol}
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -64,7 +64,7 @@ export default function Contact() {
         </motion.div>
 
         {/* Right Column - Stay Updated */}
-        <motion.div 
+        <motion.div
           className={styles.infoCol}
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -75,11 +75,11 @@ export default function Contact() {
             Ghaziabad, Uttar Pradesh, India
           </p>
           <p className={styles.infoText}>
-            hello@deucestalker.dev
+            prakhartiwari1931@gmail.com
           </p>
           <div className={styles.socialIcons}>
             {socialLinks.map((social) => (
-              <a 
+              <a
                 key={social.label}
                 href={social.href}
                 target="_blank"
@@ -93,7 +93,7 @@ export default function Contact() {
           </div>
         </motion.div>
       </div>
-      
+
       <div className={styles.footerBottom}>
         <p>© {new Date().getFullYear()} Prakhar (DeuceStalker). All rights reserved.</p>
       </div>

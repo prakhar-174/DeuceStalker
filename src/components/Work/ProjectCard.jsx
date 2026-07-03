@@ -17,11 +17,15 @@ export default function ProjectCard({ project }) {
       transitionSpeed={400}
     >
       <div className={styles.card}>
-        {/* Project image placeholder - gradient */}
+        {/* Project image */}
         <div className={styles.cardImage}>
-          <div className={styles.imagePlaceholder}>
-            <span className={styles.placeholderIcon}>{'</>'}</span>
-          </div>
+          {project.image ? (
+            <img src={project.image} alt={title} className={styles.imageAsset} />
+          ) : (
+            <div className={styles.imagePlaceholder}>
+              <span className={styles.placeholderIcon}>{'</>'}</span>
+            </div>
+          )}
         </div>
 
         {/* Content */}
