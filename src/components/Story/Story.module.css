@@ -1,0 +1,186 @@
+/* ============================================================
+   STORY - Chapter 04
+   ============================================================ */
+
+.story {
+  position: relative;
+  min-height: 100vh;
+  background: var(--color-void);
+}
+
+/* Two-column layout */
+.layout {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+/* Left column */
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.storyText {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.storyText p {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--color-silver);
+}
+
+.storyText em {
+  color: var(--color-paper);
+  font-style: italic;
+}
+
+.accent {
+  color: var(--color-web-red);
+  font-weight: 500;
+}
+
+/* Stats grid */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.statCard {
+  background: var(--glass-card);
+  border: 1px solid var(--glass-card-border);
+  border-radius: 12px;
+  padding: 20px 16px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: border-color 0.3s;
+}
+
+.statCard:hover {
+  border-color: var(--glow-red);
+}
+
+.statValue {
+  font-family: var(--font-display);
+  font-size: 32px;
+  color: var(--color-paper);
+  line-height: 1;
+}
+
+.statLabel {
+  font-family: var(--font-heading);
+  font-size: 12px;
+  color: var(--color-muted);
+  letter-spacing: 0.5px;
+}
+
+/* Right column - Timeline */
+.right {
+  position: relative;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 32px;
+}
+
+.timelineLine {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2px;
+  height: 100%;
+}
+
+.milestones {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.milestone {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  position: relative;
+}
+
+.milestoneDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-web-red);
+  border: 2px solid var(--color-void);
+  flex-shrink: 0;
+  position: absolute;
+  left: -38px;
+  top: 4px;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.2);
+}
+
+.milestoneContent {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.milestoneYear {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--color-web-red);
+  font-weight: 500;
+}
+
+.milestoneTitle {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  color: var(--color-paper);
+  font-weight: 500;
+  margin: 0;
+}
+
+.milestoneDesc {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--color-silver);
+  line-height: 1.5;
+}
+
+.milestoneAside {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--color-muted);
+  font-style: italic;
+  margin-top: 2px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .statValue {
+    font-size: 28px;
+  }
+}

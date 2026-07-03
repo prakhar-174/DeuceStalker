@@ -1,0 +1,55 @@
+// Project data - replace with your actual projects
+export const projects = [
+  {
+    id: 1,
+    title: 'NetVault',
+    description: 'A secure cloud-based file vault with end-to-end encryption and real-time sync across devices.',
+    image: null,
+    tags: ['React', 'Node.js', 'MongoDB', 'AWS'],
+    category: 'Full Stack',
+    liveUrl: '#',
+    githubUrl: '#',
+  },
+  {
+    id: 2,
+    title: 'CodeArena',
+    description: 'Real-time competitive coding platform with live leaderboards and collaborative problem solving.',
+    image: null,
+    tags: ['React', 'Socket.io', 'Express', 'Redis'],
+    category: 'Full Stack',
+    liveUrl: '#',
+    githubUrl: '#',
+  },
+  {
+    id: 3,
+    title: 'PixelForge',
+    description: 'AI-powered image editing toolkit built for speed - batch processing, filters, and smart cropping.',
+    image: null,
+    tags: ['Python', 'FastAPI', 'React', 'TensorFlow'],
+    category: 'Open Source',
+    liveUrl: '#',
+    githubUrl: '#',
+  },
+  {
+    id: 4,
+    title: 'TrackPulse',
+    description: 'Fitness tracking dashboard with real-time heart rate monitoring and personalized workout plans.',
+    image: null,
+    tags: ['React', 'Firebase', 'Chart.js', 'Tailwind'],
+    category: 'React',
+    liveUrl: '#',
+    githubUrl: '#',
+  },
+  {
+    id: 5,
+    title: 'ShipFast API',
+    description: 'Open source REST API boilerplate with auth, rate limiting, and auto-generated documentation.',
+    image: null,
+    tags: ['Node.js', 'Express', 'PostgreSQL', 'Docker'],
+    category: 'Node.js',
+    liveUrl: '#',
+    githubUrl: '#',
+  },
+];
+
+export const filters = ['All', 'React', 'Node.js', 'Full Stack', 'Open Source'];

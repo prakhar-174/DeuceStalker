@@ -1,117 +1,246 @@
 @import "tailwindcss";
 
+/* ============================================================
+   DESIGN SYSTEM - "A Web-Slinger's Chronicle"
+   ============================================================ */
+
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  /* Color Palette */
+  --color-void: #0a0a0a;
+  --color-panel: #1e1e2e;
+  --color-web-red: #dc2626;
+  --color-suit-blue: #1d4ed8;
+  --color-paper: #f1f5f9;
+  --color-silver: #94a3b8;
+  --color-muted: #475569;
+  --color-slate: #64748b;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  /* Glass / Opacity Surfaces */
+  --glass-card: rgba(30, 30, 46, 0.7);
+  --glass-card-border: rgba(255, 255, 255, 0.06);
+  --glass-nav: rgba(10, 10, 10, 0.85);
+  --glass-strand: rgba(255, 255, 255, 0.08);
+  --glow-red: rgba(220, 38, 38, 0.4);
+  --glow-red-soft: rgba(220, 38, 38, 0.1);
+  --tag-blue-bg: rgba(29, 78, 216, 0.15);
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* Typography */
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  /* Spacing */
+  --section-pad-x: clamp(20px, 5vw, 80px);
+  --section-pad-y: clamp(60px, 10vh, 120px);
+
+  /* Transitions */
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-snap: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
+/* ============================================================
+   GLOBAL RESETS
+   ============================================================ */
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-synthesis: none;
 }
 
 body {
-  margin: 0;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--color-silver);
+  background: var(--color-void);
+  overflow-x: hidden;
 }
 
 #root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
+  min-height: 100vh;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
+/* ============================================================
+   TYPOGRAPHY SCALE
+   ============================================================ */
+
+/* Hero Name */
+.text-hero-name {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 10vw, 120px);
+  line-height: 1.0;
+  color: var(--color-paper);
+  letter-spacing: 2px;
+}
+
+/* Chapter Headings */
+.text-chapter-title {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 56px);
+  line-height: 1.0;
+  color: var(--color-paper);
+}
+
+/* Chapter Numbers */
+.text-chapter-number {
+  font-family: var(--font-heading);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: var(--color-web-red);
   font-weight: 500;
-  color: var(--text-h);
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
+/* Eyebrow Label */
+.text-eyebrow {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: var(--color-slate);
+}
 
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
+/* Section Sub */
+.text-section-sub {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  color: var(--color-silver);
+}
+
+/* Card Title */
+.text-card-title {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  color: var(--color-paper);
+  font-weight: 500;
+}
+
+/* Body Copy */
+.text-body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--color-silver);
+}
+
+/* Captions */
+.text-caption {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--color-muted);
+}
+
+/* Code / Tags */
+.text-code {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--color-suit-blue);
+}
+
+/* ============================================================
+   UTILITY CLASSES
+   ============================================================ */
+
+/* Glass card surface */
+.glass-card {
+  background: var(--glass-card);
+  border: 1px solid var(--glass-card-border);
+  border-radius: 16px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Section wrapper */
+.section-wrapper {
+  padding: var(--section-pad-y) var(--section-pad-x);
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Chapter header */
+.chapter-header {
+  margin-bottom: 48px;
+}
+
+/* Selection color */
+::selection {
+  background: var(--color-web-red);
+  color: var(--color-paper);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-void);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-muted);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-web-red);
+}
+
+/* Focus visible */
+:focus-visible {
+  outline: 2px solid var(--color-web-red);
+  outline-offset: 2px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
+/* ============================================================
+   RESPONSIVE TYPE ADJUSTMENTS
+   ============================================================ */
 
-  @media (max-width: 1024px) {
-    font-size: 20px;
+@media (max-width: 768px) {
+  .text-section-sub {
+    font-size: 16px;
   }
-}
 
-p {
-  margin: 0;
-}
+  .text-card-title {
+    font-size: 18px;
+  }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
-}
+  .text-body {
+    font-size: 15px;
+  }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+  .text-caption {
+    font-size: 12px;
+  }
+
+  .text-code {
+    font-size: 12px;
+  }
 }

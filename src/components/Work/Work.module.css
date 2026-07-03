@@ -1,0 +1,188 @@
+/* ============================================================
+   WORK - Chapter 02
+   ============================================================ */
+
+.work {
+  position: relative;
+  min-height: 100vh;
+  background: var(--color-void);
+}
+
+/* Filter bar */
+.filterBar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.filterBtn {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 20px;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: transparent;
+  color: var(--color-silver);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: 0.5px;
+}
+
+.filterBtn:hover {
+  border-color: var(--color-web-red);
+  color: var(--color-paper);
+}
+
+.filterBtn.active {
+  background: var(--color-web-red);
+  border-color: var(--color-web-red);
+  color: #fff;
+}
+
+/* Asymmetric grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.gridItem {
+  will-change: transform, opacity;
+}
+
+.gridItem.large {
+  grid-column: span 2;
+}
+
+.gridItem.small {
+  grid-column: span 1;
+}
+
+/* Card */
+.card {
+  background: var(--glass-card);
+  border: 1px solid var(--glass-card-border);
+  border-radius: 16px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  overflow: hidden;
+  height: 100%;
+  transition: box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  box-shadow: 0 0 0 1px var(--glow-red), 0 8px 32px rgba(220, 38, 38, 0.12);
+}
+
+/* Card image */
+.cardImage {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.imagePlaceholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(220, 38, 38, 0.15) 0%, rgba(29, 78, 216, 0.15) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholderIcon {
+  font-family: var(--font-mono);
+  font-size: 28px;
+  color: rgba(241, 245, 249, 0.15);
+}
+
+/* Card content */
+.cardContent {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+/* Tech tags */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-suit-blue);
+  background: var(--tag-blue-bg);
+  padding: 4px 10px;
+  border-radius: 100px;
+  letter-spacing: 0.3px;
+}
+
+/* Card title */
+.cardTitle {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--color-paper);
+}
+
+/* Card description */
+.cardDesc {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--color-silver);
+  line-height: 1.6;
+}
+
+/* Card links */
+.cardLinks {
+  display: flex;
+  gap: 16px;
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+.cardLink {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  color: var(--color-silver);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s;
+}
+
+.cardLink:hover {
+  color: var(--color-web-red);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gridItem.large {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gridItem.large,
+  .gridItem.small {
+    grid-column: span 1;
+  }
+}

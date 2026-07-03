@@ -1,0 +1,146 @@
+/* ============================================================
+   HERO - Chapter 01
+   ============================================================ */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Three.js Canvas */
+.canvasWrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* Foreground content */
+.content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 0 20px;
+}
+
+/* Name */
+.name {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 10vw, 120px);
+  line-height: 1.0;
+  color: var(--color-paper);
+  letter-spacing: 4px;
+  display: flex;
+  margin: 8px 0 4px;
+}
+
+.letter {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+/* Alias */
+.alias {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--color-web-red);
+  letter-spacing: 2px;
+  opacity: 0.8;
+  margin-bottom: 8px;
+}
+
+/* Role tagline */
+.tagline {
+  font-family: var(--font-heading);
+  font-size: clamp(14px, 2vw, 18px);
+  color: var(--color-silver);
+  letter-spacing: 0.5px;
+}
+
+/* CTA Buttons */
+.cta {
+  display: flex;
+  gap: 16px;
+  margin-top: 48px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btnPrimary,
+.btnOutline {
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: 500;
+  padding: 14px 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.btnPrimary {
+  background: var(--color-web-red);
+  color: #fff;
+  border: 2px solid var(--color-web-red);
+}
+
+.btnPrimary:hover {
+  background: #b91c1c;
+  border-color: #b91c1c;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(220, 38, 38, 0.3);
+}
+
+.btnOutline {
+  background: transparent;
+  color: var(--color-web-red);
+  border: 2px solid var(--color-web-red);
+}
+
+.btnOutline:hover {
+  background: rgba(220, 38, 38, 0.08);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(220, 38, 38, 0.15);
+}
+
+/* Scroll indicator */
+.scrollIndicator {
+  position: absolute;
+  bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-heading);
+  font-size: 12px;
+  color: var(--color-slate);
+  letter-spacing: 2px;
+  z-index: 10;
+}
+
+.scrollIndicator span:first-child {
+  font-size: 18px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .cta {
+    margin-top: 32px;
+  }
+
+  .btnPrimary,
+  .btnOutline {
+    padding: 12px 24px;
+    font-size: 14px;
+  }
+}
