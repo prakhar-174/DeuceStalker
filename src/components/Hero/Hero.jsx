@@ -3,8 +3,7 @@ import { motion } from 'framer-motion';
 import { EASING, STAGGER } from '../../lib/animations';
 import styles from './Hero.module.css';
 
-// Lazy load Three.js canvas for performance
-const WebCanvas = lazy(() => import('./WebCanvas'));
+import BannerCanvas from './BannerCanvas';
 
 const NAME = 'PRAKHAR';
 const ALIAS = 'DeuceStalker';
@@ -34,86 +33,53 @@ export default function Hero() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollTo = (id) => {
-    document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <section id="hero" className={styles.hero}>
-      {/* Three.js Background */}
-      <div className={styles.canvasWrap}>
-        <Suspense fallback={null}>
-          <WebCanvas />
-        </Suspense>
-      </div>
+      {/* Interactive Banner Background */}
+      <BannerCanvas />
 
-      {/* Foreground content */}
-      <div className={styles.content}>
+      {/* Floating Content Tags */}
+      <div className={styles.floatingContainer}>
         {/* Eyebrow */}
-        <motion.p
-          className="text-eyebrow"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
+        <motion.div
+          className={`${styles.floatingTag} ${styles.tagTopLeft}`}
+          initial={{ opacity: 0, x: -20, y: -20 }}
+          animate={{ opacity: 1, x: 0, y: 0 }}
           transition={{ delay: 0.3, duration: 0.5 }}
         >
-          {'< developer />'}
-        </motion.p>
+          <span className="text-eyebrow">{'< developer />'}</span>
+        </motion.div>
 
-        {/* Name - letter-by-letter animation */}
-        <h1 className={styles.name}>
-          {NAME.split('').map((letter, i) => (
-            <motion.span
-              key={i}
-              className={styles.letter}
-              variants={letterVariants}
-              initial="initial"
-              animate="animate"
-              custom={i}
-            >
-              {letter}
-            </motion.span>
-          ))}
-        </h1>
+        {/* Name */}
+        <motion.div
+          className={`${styles.floatingTag} ${styles.tagCenterRight}`}
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.5, duration: 0.6 }}
+        >
+          <h1 className={styles.nameTag}>{NAME}</h1>
+        </motion.div>
 
         {/* Alias */}
-        <motion.p
-          className={styles.alias}
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: NAME.length * STAGGER.letters + 0.3, duration: 0.5, ease: EASING.smooth }}
+        <motion.div
+          className={`${styles.floatingTag} ${styles.tagCenterLeft}`}
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.7, duration: 0.6 }}
         >
-          aka {ALIAS}
-        </motion.p>
+          <span className={styles.aliasTag}>aka {ALIAS}</span>
+        </motion.div>
 
         {/* Role tagline */}
-        <motion.p
-          className={styles.tagline}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: NAME.length * STAGGER.letters + 0.5, duration: 0.6 }}
-        >
-          Full Stack Developer &nbsp;·&nbsp; Problem Solver &nbsp;·&nbsp; Web Craftsman
-        </motion.p>
-
-        {/* CTA Buttons */}
         <motion.div
-          className={styles.cta}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: NAME.length * STAGGER.letters + 0.8, duration: 0.5, ease: EASING.smooth }}
+          className={`${styles.floatingTag} ${styles.tagBottomRight}`}
+          initial={{ opacity: 0, x: 20, y: 20 }}
+          animate={{ opacity: 1, x: 0, y: 0 }}
+          transition={{ delay: 0.9, duration: 0.6 }}
         >
-          <button
-            className={styles.btnPrimary}
-            onClick={() => scrollTo('#work')}
-          >
-            View My Work
-          </button>
-          <button
-            className={styles.btnOutline}
-            onClick={() => scrollTo('#contact')}
-          >
-            Let's Talk
-          </button>
+          <span className={styles.taglineTag}>
+            Frontend Developer &nbsp;·&nbsp; Problem Solver &nbsp;·&nbsp; Web Craftsman
+          </span>
         </motion.div>
       </div>
 

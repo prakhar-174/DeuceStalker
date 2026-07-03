@@ -12,105 +12,122 @@
   overflow: hidden;
 }
 
-/* Three.js Canvas */
-.canvasWrap {
+/* Interactive Banner Container */
+.bannerContainer {
   position: absolute;
   inset: 0;
   z-index: 0;
+  overflow: hidden;
 }
 
-/* Foreground content */
-.content {
-  position: relative;
+.bannerProfile {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  z-index: 1;
+}
+
+.bannerCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  cursor: default;
+}
+
+/* Floating Content Container */
+.floatingContainer {
+  position: absolute;
+  inset: 0;
   z-index: 10;
-  text-align: center;
+  pointer-events: none; /* Let clicks pass through to canvas! */
+}
+
+/* Base Floating Tag */
+.floatingTag {
+  position: absolute;
+  background: var(--glass-card);
+  border: 1px solid var(--glass-card-border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 12px 24px;
+  border-radius: 100px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 8px;
-  padding: 0 20px;
+  justify-content: center;
+  pointer-events: auto; /* Allow text selection/hover if needed */
 }
 
-/* Name */
-.name {
-  font-family: var(--font-display);
-  font-size: clamp(56px, 10vw, 120px);
-  line-height: 1.0;
+/* Positions & Float Animations */
+.tagTopLeft {
+  top: 15%;
+  left: 10%;
+  animation: float1 6s ease-in-out infinite;
+}
+
+.tagCenterRight {
+  top: 40%;
+  right: 10%;
+  animation: float2 7s ease-in-out infinite;
+}
+
+.tagCenterLeft {
+  top: 60%;
+  left: 10%;
+  animation: float3 8s ease-in-out infinite;
+}
+
+.tagBottomRight {
+  bottom: 20%;
+  right: 10%;
+  animation: float4 6s ease-in-out infinite reverse;
+}
+
+@keyframes float1 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes float2 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+@keyframes float3 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+@keyframes float4 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-18px); }
+}
+
+/* Typographic Styles within Tags */
+.nameTag {
+  font-family: var(--font-custom);
+  font-size: clamp(32px, 5vw, 64px);
+  font-weight: 700;
   color: var(--color-paper);
-  letter-spacing: 4px;
-  display: flex;
-  margin: 8px 0 4px;
+  letter-spacing: 2px;
+  margin: 0;
+  line-height: 1;
 }
 
-.letter {
-  display: inline-block;
-  will-change: transform, opacity;
-}
-
-/* Alias */
-.alias {
+.aliasTag {
   font-family: var(--font-mono);
   font-size: 14px;
   color: var(--color-web-red);
   letter-spacing: 2px;
-  opacity: 0.8;
-  margin-bottom: 8px;
 }
 
-/* Role tagline */
-.tagline {
-  font-family: var(--font-heading);
-  font-size: clamp(14px, 2vw, 18px);
+.taglineTag {
+  font-family: var(--font-custom);
+  font-size: clamp(12px, 1.5vw, 16px);
   color: var(--color-silver);
-  letter-spacing: 0.5px;
-}
-
-/* CTA Buttons */
-.cta {
-  display: flex;
-  gap: 16px;
-  margin-top: 48px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.btnPrimary,
-.btnOutline {
-  font-family: var(--font-heading);
-  font-size: 15px;
-  font-weight: 500;
-  padding: 14px 32px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  letter-spacing: 0.5px;
-  position: relative;
-  overflow: hidden;
-}
-
-.btnPrimary {
-  background: var(--color-web-red);
-  color: #fff;
-  border: 2px solid var(--color-web-red);
-}
-
-.btnPrimary:hover {
-  background: #b91c1c;
-  border-color: #b91c1c;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(220, 38, 38, 0.3);
-}
-
-.btnOutline {
-  background: transparent;
-  color: var(--color-web-red);
-  border: 2px solid var(--color-web-red);
-}
-
-.btnOutline:hover {
-  background: rgba(220, 38, 38, 0.08);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(220, 38, 38, 0.15);
 }
 
 /* Scroll indicator */
@@ -121,7 +138,7 @@
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  font-family: var(--font-heading);
+  font-family: var(--font-custom);
   font-size: 12px;
   color: var(--color-slate);
   letter-spacing: 2px;
@@ -134,13 +151,12 @@
 
 /* Mobile adjustments */
 @media (max-width: 768px) {
-  .cta {
-    margin-top: 32px;
-  }
-
-  .btnPrimary,
-  .btnOutline {
-    padding: 12px 24px;
-    font-size: 14px;
+  .tagTopLeft { top: 10%; left: 5%; }
+  .tagCenterRight { top: 30%; right: 5%; }
+  .tagCenterLeft { top: 60%; left: 5%; }
+  .tagBottomRight { bottom: 15%; right: 5%; left: 5%; text-align: center; justify-content: center; }
+  
+  .floatingTag {
+    padding: 10px 16px;
   }
 }

@@ -117,7 +117,7 @@
 }
 
 .tag {
-  font-family: var(--font-mono);
+  font-family: var(--font-custom);
   font-size: 11px;
   color: var(--color-suit-blue);
   background: var(--tag-blue-bg);
@@ -128,7 +128,7 @@
 
 /* Card title */
 .cardTitle {
-  font-family: var(--font-heading);
+  font-family: var(--font-custom);
   font-size: 20px;
   font-weight: 500;
   color: var(--color-paper);
@@ -136,7 +136,7 @@
 
 /* Card description */
 .cardDesc {
-  font-family: var(--font-body);
+  font-family: var(--font-custom);
   font-size: 14px;
   color: var(--color-silver);
   line-height: 1.6;
@@ -151,7 +151,7 @@
 }
 
 .cardLink {
-  font-family: var(--font-heading);
+  font-family: var(--font-custom);
   font-size: 13px;
   color: var(--color-silver);
   text-decoration: none;
