@@ -10,7 +10,7 @@ export default function BannerCanvas() {
 
     const ctx = canvas.getContext('2d');
     const bgImg = new Image();
-    bgImg.src = '/banner.svg';
+    bgImg.src = '/halternative.svg';
 
     let drawWidth, drawHeight, offsetX, offsetY;
 

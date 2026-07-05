@@ -44,7 +44,7 @@
 /* Asymmetric grid */
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(12, 1fr);
   gap: 24px;
 }
 
@@ -52,13 +52,12 @@
   will-change: transform, opacity;
 }
 
-.gridItem.large {
-  grid-column: span 2;
-}
-
-.gridItem.small {
-  grid-column: span 1;
-}
+.span7 { grid-column: span 7; }
+.span5 { grid-column: span 5; }
+.span6 { grid-column: span 6; }
+.span3 { grid-column: span 3; }
+.defaultSpan { grid-column: span 4; }
+.orderLast { order: 10; }
 
 /* Card */
 .card {
@@ -177,11 +176,15 @@
 /* Responsive */
 @media (max-width: 1024px) {
   .grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(12, 1fr);
   }
 
-  .gridItem.large {
-    grid-column: span 2;
+  .span7, .span5, .span6 {
+    grid-column: span 12;
+  }
+
+  .span3, .defaultSpan {
+    grid-column: span 6;
   }
 }
 
@@ -190,8 +193,7 @@
     grid-template-columns: 1fr;
   }
 
-  .gridItem.large,
-  .gridItem.small {
+  .span7, .span5, .span6, .span3, .defaultSpan {
     grid-column: span 1;
   }
 }

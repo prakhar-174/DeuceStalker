@@ -1,45 +1,61 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import { useState, useRef, useEffect } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ProjectCard from './ProjectCard';
 import { projects, filters } from '../../data/projects';
-import { EASING, STAGGER } from '../../lib/animations';
 import styles from './Work.module.css';
 
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: STAGGER.cards,
-    },
-  },
-};
-
-const cardVariants = {
-  hidden: { y: 80, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.8,
-      ease: EASING.bounce,
-    },
-  },
-};
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Work() {
   const [activeFilter, setActiveFilter] = useState('All');
-  const [ref, inView] = useInView({
-    threshold: 0.1,
-    triggerOnce: true,
-  });
+  const containerRef = useRef(null);
+  const cardsRef = useRef([]);
 
   const filteredProjects = activeFilter === 'All'
     ? projects
     : projects.filter(p => p.tags.includes(activeFilter) || p.category === activeFilter);
 
+  // Setup GSAP Animations
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      cardsRef.current.forEach((card, index) => {
+        if (!card) return;
+        
+        gsap.fromTo(
+          card,
+          { y: 80, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: 'back.out(1.2)',
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 85%',
+              end: 'bottom 20%',
+              toggleActions: 'play reverse play reverse',
+            }
+          }
+        );
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, [filteredProjects]);
+
+  const getGridClass = (project) => {
+    if (activeFilter !== 'All') return styles.defaultSpan;
+    if (project.title === 'AarogyaAI') return styles.span7;
+    if (project.title === 'MediSlot') return styles.span5;
+    if (project.title === 'SkillForge') return `${styles.span6} ${styles.orderLast}`;
+    if (project.title === 'AgriConnect') return styles.span3;
+    if (project.title === 'TechBridge') return styles.span3;
+    return styles.defaultSpan;
+  };
+
   return (
-    <section id="work" className={styles.work}>
+    <section id="work" className={styles.work} ref={containerRef}>
       <div className="section-wrapper">
         {/* Chapter header */}
         <div className="chapter-header">
@@ -61,23 +77,17 @@ export default function Work() {
         </div>
 
         {/* Project grid */}
-        <motion.div
-          ref={ref}
-          className={styles.grid}
-          variants={containerVariants}
-          initial="hidden"
-          animate={inView ? 'visible' : 'hidden'}
-        >
+        <div className={styles.grid}>
           {filteredProjects.map((project, index) => (
-            <motion.div
+            <div
               key={project.id}
-              className={`${styles.gridItem} ${index % 3 === 0 ? styles.large : styles.small}`}
-              variants={cardVariants}
+              ref={(el) => (cardsRef.current[index] = el)}
+              className={`${styles.gridItem} ${getGridClass(project)}`}
             >
               <ProjectCard project={project} />
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
