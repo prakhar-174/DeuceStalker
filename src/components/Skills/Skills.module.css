@@ -4,7 +4,6 @@
 
 .skills {
   position: relative;
-  min-height: 100vh;
   background: var(--color-void);
   overflow: hidden;
 }
@@ -150,16 +149,16 @@
   }
 
   .orbCircle {
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
   }
 
   .orbCircle svg {
-    width: 18px;
-    height: 18px;
+    width: 14px;
+    height: 14px;
   }
 
   .orbLabel {
-    font-size: 9px;
+    font-size: 8px;
   }
 }

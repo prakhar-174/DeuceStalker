@@ -46,7 +46,8 @@
   position: absolute;
   inset: 0;
   z-index: 10;
-  pointer-events: none; /* Let clicks pass through to canvas! */
+  pointer-events: none;
+  /* Let clicks pass through to canvas! */
 }
 
 /* Base Floating Tag */
@@ -62,7 +63,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  pointer-events: auto; /* Allow text selection/hover if needed */
+  pointer-events: auto;
+  /* Allow text selection/hover if needed */
 }
 
 /* Positions & Float Animations */
@@ -91,20 +93,51 @@
 }
 
 @keyframes float1 {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
 }
+
 @keyframes float2 {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
 }
+
 @keyframes float3 {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
 }
+
 @keyframes float4 {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-18px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-18px);
+  }
 }
 
 /* Typographic Styles within Tags */
@@ -152,11 +185,29 @@
 
 /* Mobile adjustments */
 @media (max-width: 768px) {
-  .tagTopLeft { top: 10%; left: 5%; }
-  .tagCenterRight { top: 30%; right: 5%; }
-  .tagCenterLeft { top: 60%; left: 5%; }
-  .tagBottomRight { bottom: 15%; right: 5%; left: 5%; text-align: center; justify-content: center; }
-  
+  .tagTopLeft {
+    top: 10%;
+    left: 5%;
+  }
+
+  .tagCenterRight {
+    top: 30%;
+    right: 5%;
+  }
+
+  .tagCenterLeft {
+    top: 60%;
+    left: 5%;
+  }
+
+  .tagBottomRight {
+    bottom: 15%;
+    right: 5%;
+    left: 5%;
+    text-align: center;
+    justify-content: center;
+  }
+
   .floatingTag {
     padding: 10px 16px;
   }

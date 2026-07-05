@@ -146,4 +146,8 @@
   .brandCol {
     grid-column: span 1;
   }
+
+  .socialIcons {
+    justify-content: center;
+  }
 }
